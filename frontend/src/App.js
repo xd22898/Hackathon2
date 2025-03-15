@@ -41,7 +41,7 @@ const App = () => {
         <header className="py-6 shadow-lg bg-gray-900">
           <div className="container mx-auto flex flex-col items-center">
             <motion.h1
-              className="text-5xl font-extrabold text-center text-purple-300"
+              className="text-5xl font-extrabold text-center text-purple-400"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 2 }}
@@ -49,13 +49,22 @@ const App = () => {
               Your Company Name
             </motion.h1>
             <nav className="mt-4 flex space-x-6 text-lg">
-              <Link to="/" className="px-4 py-2 rounded-lg transition hover:bg-blue-500">
+              <Link
+                to="/"
+                className="px-4 py-2 rounded-lg transition hover:bg-blue-500"
+              >
                 Home
               </Link>
-              <Link to="/education" className="px-4 py-2 rounded-lg transition hover:bg-blue-500">
+              <Link
+                to="/education"
+                className="px-4 py-2 rounded-lg transition hover:bg-blue-500"
+              >
                 Education
               </Link>
-              <Link to="/client-form" className="px-4 py-2 rounded-lg transition hover:bg-blue-500">
+              <Link
+                to="/client-form"
+                className="px-4 py-2 rounded-lg transition hover:bg-blue-500"
+              >
                 Client Form
               </Link>
             </nav>
@@ -80,7 +89,10 @@ const App = () => {
 
         {/* Footer */}
         <footer className="py-6 bg-gray-900 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Your Company Name. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Your Company Name. All rights
+            reserved.
+          </p>
         </footer>
       </div>
     </Router>

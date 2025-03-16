@@ -32,6 +32,7 @@ import EducationPage from "./pages/EducationPage";
 import ClientFormPage from "./pages/ClientFormPage";
 import ScorePage from "./pages/ScorePage";
 import { motion } from "framer-motion";
+import { FireIcon } from "@heroicons/react/24/solid";
 
 const App = () => {
   return (
@@ -41,12 +42,13 @@ const App = () => {
         <header className="py-6 shadow-lg bg-gray-900">
           <div className="container mx-auto flex flex-col items-center">
             <motion.h1
-              className="text-5xl font-extrabold text-center text-purple-400"
+              className="text-5xl font-extrabold text-center text-purple-400 inline-flex items-center"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 2 }}
             >
-              Your Company Name
+              Vitalis
+              <FireIcon className="w-10 h-10 text-orange-500 animate-pulse ml-1" />
             </motion.h1>
             <nav className="mt-4 flex space-x-6 text-lg">
               <Link

@@ -92,7 +92,9 @@ const ClientFormPage = () => {
     }
   
     // Navigate to the score page and pass the total score and risk category
-    navigate("/score", { state: { score: totalScore, riskCategory: riskCategory } });
+    // Navigate to ScorePage and pass answers
+    navigate("/score", { state: { score: totalScore, riskCategory, answers } });
+
   };
   
   return (

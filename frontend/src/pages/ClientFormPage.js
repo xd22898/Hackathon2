@@ -23,7 +23,7 @@ const ClientFormPage = () => {
       "Frequent infections, cold, flu?"
     ]},
     { category: "Lifestyle Factors", items: [
-      "Unhealthy diet (processed foods, refined carbs)?",
+      "How often do you consume processed foods/ready meals (ham, refined carbs, crisps)?",
       "Sleep deprivation (<6 hours per night)?",
       "Low physical activity (<3 times per week)?",
       "High levels of stress or anxiety?"

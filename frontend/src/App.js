@@ -47,7 +47,7 @@ const App = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 2 }}
             >
-              Vitalis
+              Cureation
               <FireIcon className="w-10 h-10 text-orange-500 animate-pulse ml-1" />
             </motion.h1>
             <nav className="mt-4 flex space-x-6 text-lg">

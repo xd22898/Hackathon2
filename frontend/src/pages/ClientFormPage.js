@@ -121,6 +121,7 @@ const ClientFormPage = () => {
           </div>
         ))}
         
+        <div className="text-xl font-semibold text-blue-600 mb-2"> Blood Test Markers </div>
         {/* Optional ESR and CRP Fields */}
         <div className="mb-6">
           <label className="block text-gray-700 mb-2">ESR (Erythrocyte Sedimentation Rate) (Optional)</label>

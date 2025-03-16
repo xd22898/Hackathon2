@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
@@ -7,6 +7,21 @@ const ScorePage = () => {
   const { score, riskCategory, answers } = state;
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [dietaryInfo, setDietaryInfo] = useState("");
+
+  useEffect(() => {
+    const fetchDietaryInfo = async () => {
+      try {
+        const response = await fetch("/path/to/dietary_info.txt");
+        const text = await response.text();
+        setDietaryInfo(text);
+      } catch (error) {
+        console.error("Error reading dietary info:", error);
+      }
+    };
+
+    fetchDietaryInfo();
+  }, []);
 
   let circleColor =
     riskCategory === "Low Risk"
@@ -26,7 +41,10 @@ const ScorePage = () => {
           .map(([question, response]) => `${question}: ${response}`)
           .join("\n")}
 
-        Based on this information, provide the **top 5 actionable steps** they can take to **reduce inflammation**. Each suggestion should be specific, practical, and backed by research.
+        Here is the dietary information provided:
+        ${dietaryInfo}
+
+        Based on this information, provide the **top 5 actionable steps** they can take to **reduce inflammation**. Each suggestion should be specific, practical, and backed by research from trusted sources such as NHS England, Mayo Clinic, WebMD, Johns Hopkins.
       `;
 
       const response = await axios.post("http://127.0.0.1:5000/generate", {

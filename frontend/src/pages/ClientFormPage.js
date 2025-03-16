@@ -39,11 +39,62 @@ const ClientFormPage = () => {
   };
 
   const calculateScore = () => {
-    // Summing up all the values selected by the user for each question
-    const score = Object.values(answers).reduce((acc, value) => acc + parseInt(value), 0);
-    navigate("/score", { state: { score } });
+    // Define weights for different categories based on many research and medical websites
+    const questionWeights = {
+      "Symptoms and Severity": 2,
+      "Digestive and Gut Health": 1.5,
+      "Skin and Immune System": 1,
+      "Lifestyle Factors": 2,
+    };
+  
+    let scoreFromQuestions = 0;
+    
+    // Loop through each category and apply weights to questions
+    questions.forEach(section => {
+      section.items.forEach((question, qIndex) => {
+        let questionScore = parseInt(answers[question]) || 0;
+        // Apply weight to the score from the question
+        scoreFromQuestions += questionScore * questionWeights[section.category];
+      });
+    });
+  
+    // Calculate the CRP score
+    let CRPScore = 0;
+    const CRPValue = parseFloat(answers["CRP"]);
+    if (CRPValue) {
+      if (CRPValue <= 0.3) CRPScore = 0; // Normal
+      else if (CRPValue > 0.3 && CRPValue <= 1.0) CRPScore = 1; // Minor Elevation
+      else if (CRPValue > 1.0 && CRPValue <= 10.0) CRPScore = 2; // High
+      else if (CRPValue > 10.0) CRPScore = 3; // Very High
+    }
+  
+    // Calculate the ESR score
+    let ESRScore = 0;
+    const ESRValue = parseFloat(answers["ESR"]);
+    if (ESRValue) {
+      if (ESRValue <= 15) ESRScore = 0; // Normal
+      else if (ESRValue > 15 && ESRValue <= 40) ESRScore = 1; // Mild Elevation
+      else if (ESRValue > 40 && ESRValue <= 60) ESRScore = 2; // Moderate Elevation
+      else if (ESRValue > 60) ESRScore = 3; // Very High
+    }
+  
+    // Total score = weighted score from questions + CRP score + ESR score
+    const totalScore = scoreFromQuestions + CRPScore + ESRScore;
+  
+    // Determine the risk category based on the total score
+    let riskCategory = '';
+    if (totalScore <= 14) {
+      riskCategory = 'Low Risk'; // Green
+    } else if (totalScore > 14 && totalScore <= 30) {
+      riskCategory = 'Medium Risk'; // Yellow
+    } else {
+      riskCategory = 'High Risk'; // Red
+    }
+  
+    // Navigate to the score page and pass the total score and risk category
+    navigate("/score", { state: { score: totalScore, riskCategory: riskCategory } });
   };
-
+  
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
       <h2 className="text-3xl font-bold text-purple-500 mb-4">Inflammation Score Assessment</h2>

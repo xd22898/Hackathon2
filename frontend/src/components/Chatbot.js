@@ -1,31 +1,43 @@
 import React, { useState } from "react";
+import axios from "axios"; // Import Axios
 
 const Chatbot = () => {
-  const [prompt, setPrompt] = useState("");
-  const [responseText, setResponseText] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [prompt, setPrompt] = useState(""); // User input
+  const [responseText, setResponseText] = useState(""); // AI's response
+  const [loading, setLoading] = useState(false); // Loading state
 
+  // Handle form submission
   const handleSend = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setResponseText(""); // clear previous response
+    setLoading(true);  // Set loading state to true
+    setResponseText("");  // Clear previous response
+
     try {
-      const res = await fetch("/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt, temp: 0.7 }),
+      // Define prompt structure (change prompt as needed)
+      const promptText = `
+        A user asked a question: "${prompt}"
+        
+        Based on this information, provide a helpful, well-researched response. Limit the response to 3 simple sentences for a user who is not too knowledgeable about this subject.
+      `;
+
+      // Make API request using Axios to send prompt and retrieve AI response
+      const response = await axios.post("http://127.0.0.1:5000/generate", {
+        prompt: promptText,  // The user’s question as prompt
+        temp: 0.7,  // Temperature for response generation
       });
-      const data = await res.json();
-      if (data.status === "ok") {
-        setResponseText(data.text);
+
+      // Check if the API responded successfully
+      if (response.data.status === "ok") {
+        setResponseText(response.data.text);  // Set the response text to display
       } else {
-        setResponseText("Error: " + data.text);
+        setResponseText("Error: " + response.data.text);  // Set error message
       }
     } catch (error) {
-      console.error("Error fetching suggestion:", error);
-      setResponseText("Error fetching suggestion.");
+      console.error("Error fetching response:", error);  // Log the error
+      setResponseText("Error fetching response.");  // Set error message
     }
-    setLoading(false);
+
+    setLoading(false);  // Reset loading state
   };
 
   return (
@@ -36,7 +48,7 @@ const Chatbot = () => {
       <form onSubmit={handleSend}>
         <textarea
           value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
+          onChange={(e) => setPrompt(e.target.value)}  // Update prompt as user types
           placeholder="Ask me a health question..."
           className="w-full p-3 rounded text-black mb-4"
           rows="4"

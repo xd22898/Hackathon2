@@ -13,7 +13,7 @@ const ChatbotWidget = () => {
     <>
       {/* Chat window: only show when isOpen is true */}
       {isOpen && (
-        <div className="fixed bottom-16 right-4 w-80 h-96 bg-gray-800 p-4 rounded-lg shadow-lg z-50">
+        <div className="fixed bottom-16 right-4 w-80 h-96 bg-gray-800 p-4 rounded-lg shadow-lg z-50 flex flex-col">
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-xl font-bold text-white">Chatbot</h2>
             <button
@@ -23,7 +23,21 @@ const ChatbotWidget = () => {
               X
             </button>
           </div>
-          <Chatbot />
+
+          {/* Chat response area: scrollable */}
+          <div className="flex-grow overflow-y-auto mb-4 p-2 bg-gray-700 rounded-lg">
+            <Chatbot />
+          </div>
+
+          {/* Input form stays at the bottom */}
+          <div className="mt-2">
+            <button
+              onClick={toggleChat}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
+            >
+              Close Chat
+            </button>
+          </div>
         </div>
       )}
 

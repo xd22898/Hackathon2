@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import ChatbotWidget from "../components/ChatbotWidget";
 
 const EducationPage = () => {
   return (
@@ -100,6 +101,7 @@ const EducationPage = () => {
           ethnicity-related inflammation risks.
         </p>
       </motion.section>
+      <ChatbotWidget />
     </div>
   );
 };

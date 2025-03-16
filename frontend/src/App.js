@@ -53,21 +53,21 @@ const App = () => {
             <nav className="mt-4 flex space-x-6 text-lg">
               <Link
                 to="/"
-                className="px-4 py-2 rounded-lg transition hover:bg-blue-500"
+                className="px-4 py-2 rounded-lg transition hover:bg-blue-700"
               >
                 Home
               </Link>
               <Link
                 to="/education"
-                className="px-4 py-2 rounded-lg transition hover:bg-blue-500"
+                className="px-4 py-2 rounded-lg transition hover:bg-blue-700"
               >
                 Education
               </Link>
               <Link
                 to="/client-form"
-                className="px-4 py-2 rounded-lg transition hover:bg-blue-500"
+                className="px-4 py-2 rounded-lg transition hover:bg-blue-700"
               >
-                Client Form
+                Get Score
               </Link>
             </nav>
           </div>

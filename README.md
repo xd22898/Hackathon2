@@ -39,7 +39,7 @@ Cureation represents a convergence of clinical expertise and digital innovation,
 
 - **Exploring the Platform:**
   - Navigate to the Education page to interact with the integrated AI chatbot. Ask questions about inflammation and receive personalized insights.
-  - Use the dynamic questionnaire to input your inflammatory markers (CRP & ESR) and other health data. The system calculates your inflammation risk score and provides tailored health recommendations.
+  - Use the questionnaire to input your inflammatory markers (CRP & ESR) and other health data. The system calculates your inflammation risk score and provides tailored health recommendations.
 
 - **Interacting with the Chatbot:**
   - The chatbot uses the OpenAI API to deliver real-time responses based on NHS guidelines.

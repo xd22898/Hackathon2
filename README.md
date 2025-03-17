@@ -2,7 +2,7 @@
 
 ## Overview
 
-Cureation is a personalized platform designed to empower users with knowledge and actionable insights into bodily and cellular inflammation. Developed as part of a hackathon project, Cureation integrates an AI chatbot into the Education page to answer questions about inflammation and provide tailored health suggestions based on NHS guidelines. Using a dynamic, adaptive questionnaire, the system calculates an inflammation risk score through a weighted algorithm, delivering personalized recommendations and further educational content.
+Cureation is a personalized platform designed to empower users with knowledge and actionable insights into bodily and cellular inflammation. Developed as part of a hackathon project, Cureation integrates an AI chatbot into the Education page to answer questions about inflammation and provide tailored health suggestions based on NHS guidelines. Using a thorough questionnaire, the system calculates an inflammation risk score through a weighted algorithm, delivering personalized recommendations and further educational content.
 
 ## Features
 

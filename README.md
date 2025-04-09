@@ -13,7 +13,7 @@ Cureation is a personalized platform designed to empower users with knowledge an
 
 - **Personalized Health Suggestions**
   - Utilizes the OpenAI API (GPT-3.5-turbo) to generate tailored insights.
-  - Incorporates NHS guidelines to ensure recommendations are clinically sound.
+  - Incorporates trusted sources and guidelines (eg. NHS) to ensure recommendations are clinically sound.
   - Leverages user responses from a smart questionnaire to calculate a personalized inflammation risk score.
 
 - **Questionnaire & Weighted Algorithm**
@@ -74,7 +74,7 @@ Cureation represents a convergence of clinical expertise and digital innovation,
 - **Additional Services:** Python Flask service for processing NHS guidelines and interfacing with the OpenAI API
 - **Database (optional):** MongoDB (for storing user responses and scores)
 
-##Improvements/ Lessons Learned
+## Improvements/ Lessons Learned
 
 - **Data Security & Confidentiality**
   - Emphasizes protecting user data throughout the application (following GDPR guidelines).
